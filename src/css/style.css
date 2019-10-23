@@ -1,0 +1,26 @@
+*{
+    padding:0%;
+    margin: 0%;
+}
+
+.content{
+    background-color: #7CEC9F;
+}
+
+.imageContainer{
+    background-color: #ffffff;
+    height: 100vh;
+    align-items: center;
+}
+
+.signupTitle{
+    text-align: center;
+    margin: 0% 0% 10% 0%;
+}
+
+.image ,.logo{
+    object-fit: contain;
+    padding: 0% 0% 0% 0%;
+  }
+
+

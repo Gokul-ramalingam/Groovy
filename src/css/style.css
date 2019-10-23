@@ -24,7 +24,7 @@
   }
 
 .signupButton,.signinButton,.spinupButton,.spininButton{
- background-color: #1BCA9B;
+ background-color: #2ecc72;
   padding: 2% 10% 2% 10%;
   border-radius: 50px;
   font-size: 1.3em;
@@ -63,12 +63,12 @@
 
 .signupButton:hover{
 color: #ffffff;
-background-color: #2ecc72;
+background-color: #1BCA9B;
 }
 
 .signinButton:hover{
 color: #ffffff;
-background-color: #2ecc72;   
+background-color: #1BCA9B;   
 }
 .signupText{
     color: #ffffff;
@@ -91,4 +91,9 @@ background-color: #2ecc72;
 .formControl:focus{
 border:0;
 }
+
+.passwordError,.usernameError,.signinError{
+    color: #E71C23;
+  }
+
 

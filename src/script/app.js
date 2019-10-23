@@ -1,6 +1,5 @@
 let init = () => {
-    $('.form2').hide();
-    $('.progress').hide();
+    $('.form2,.progress,.usernameError,.passwordError,.signinError,.progress,#spinup,#spinin').hide();
 }
 $(init);
 
@@ -38,6 +37,7 @@ $("#signup").click(() => {
             success: (data) => {
                  localStorage.setItem('token',data.token.split(' ')[1]);
                 window.location.href='/src/html/dashboard.html'
+                console.log('data');
             },
             error: () => {
                 $('#signupForm')[0].reset();
@@ -52,3 +52,62 @@ $("#signup").click(() => {
         });
     }
 })
+
+$("#signin").click(() => {
+    let dataString = {}
+    dataString.email = $('#signinUsername').val();
+    dataString.password = $('#signinPassword').val();
+    dataString.email === ''?$('#signinUsername').css('border','1px solid red'):null;
+    dataString.password === ''?$('#signinPassword').css('border','1px solid red'):null;
+    if(dataString.email !== '' && dataString.password !== ''){
+
+        $('#signin').hide();
+        $('#spinin').show();
+        
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(dataString),
+            contentType: "application/json",
+            url: "http://localhost:4000/api/auth/login",
+            success: (data) => {
+                localStorage.setItem('token',data.token.split(' ')[1]);
+                window.location.href='/src/html/dashboard.html'
+            },
+            error: () => {
+                $('#signinPassword').val('');
+                $('#signinPassword').css('border','1px solid red');
+                $('.signinError').show();
+            },
+            complete: () => {
+                $('#signin').show();
+                $('#spinin').hide();
+            }
+        });
+    }
+})
+
+
+$("#username").click(() => {
+    $('#username').css('border','none');
+    $('.usernameError').hide();
+})
+
+$("#email").click(() => {
+    $('#email').css('border','none');
+})
+
+$("#password").click(() => {
+    $('.progress').show();
+    $('#password').css('border','none')&&$('.passwordError').hide();
+})
+
+$("#signinUsername").click(() => {
+    $('#signinUsername').css('border','none');
+})
+
+$("#signinPassword").click(() => {
+    $('#signinPassword').css('border','none');
+    $('.signinError').hide();
+})
+
+

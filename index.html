@@ -1,0 +1,67 @@
+<!-- Title : Groovy
+Description : This an application designed and developed to make provision for users to make their hair cut process simple. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- font-awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href='src/css/style.css'>
+    <title>Groovy</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row content">
+                <div class="col-12 col-md-8 formContainer">
+                        <div class="container h-100">
+                                <div class="row h-100 justify-content-center align-items-center">
+                                    <form class="col-6" id="signupForm">
+                                            <h2 class="signupTitle"><b>Sign up for Groovy</b></h2>
+                                                    <div class="form-group">
+                                                        <!-- <label for="username">Username</label> -->
+                                                        <input type="text" class="form-control" id="username" name="username" 
+                                                        placeholder="Enter Your username" required>
+                                                        <span class="usernameError">Username already exists</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="email">Email address</label> -->
+                                                        <input type="email" class="form-control" id="email" name="email"
+                                                            aria-describedby="emailHelp" placeholder="Enter Your email" required>
+                                                            <!-- <span class="emailError">Please enter your email</span> -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="password">Password</label> -->
+                                                        <input type="password" class="form-control" id="password" name="password"
+                                                        placeholder="Enter Your password"  required>
+                                                        <span class="passwordError">password should atleast be 8 characters long and must contain one lowercase a-z,
+                                                            one uppercase A-Z ,one number 0-9 and one special character</span> 
+                                                        <div class="progress">
+                                                            <div class="progress-bar bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-12 text-center buttonContainer">
+                                                        <button type="button" class="btn signupButton" id="signup">signup</button>
+                                                        <button type="button" class="btn spinupButton" id="spinup"><i class="fa fa-spinner fa-spin  load"></i></button>
+                                                    </div>
+
+                                                    <div class="signInText">
+                                                        <span></span>
+                                                    </div>
+                                    </form>
+                                </div>
+                        </div>
+                </div> 
+                <div class="col-12 col-md-4 imageContainer">
+                        <img class="img-fluid logo" src="src/images/logo.png" alt="Logo" id="image">
+                        <img src="src/images/signup.png" class="img-fluid image" alt="Responsive image">
+                 </div>
+            </div>
+    </div>
+</body>
+</html>

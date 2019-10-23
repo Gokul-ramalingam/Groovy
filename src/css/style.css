@@ -23,13 +23,19 @@
     padding: 0% 0% 0% 0%;
   }
 
-.signupButton,.signinButton{
+.signupButton,.signinButton,.spinupButton,.spininButton{
  background-color: #1BCA9B;
   padding: 2% 10% 2% 10%;
   border-radius: 50px;
   font-size: 1.3em;
   cursor: pointer;
   margin: 10% 0% 0% 0%;
+}
+
+.spinupButton,.spininButton{
+  padding: 2% 13% 2% 13%;
+  margin: 10% 0% 0% 0%;
+  color: #ffffff;
 }
 
 .form-control{
@@ -81,3 +87,8 @@ background-color: #2ecc72;
 .signinText:hover{
     color: #0A79DF;
 }
+
+.formControl:focus{
+border:0;
+}
+

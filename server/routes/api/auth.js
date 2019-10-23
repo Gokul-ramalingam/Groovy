@@ -70,4 +70,50 @@ User.findOne({email})
 })
 
 
+// @type           Post 
+// @route          /api/auth/login
+// @desc           This route is for user login
+// @access       PUBLIC
+router.post('/login',(req,res)=>{
+    const {email,password} = req.body;
+    User.findOne({email})
+             .then(user => {
+                 if(!user)
+                    return res.status(404).send({
+                        "Error" : "User already with the same name already exists"
+                    });
+                
+                bcrypt.compare(password,user.password)
+                            .then(correct =>{
+                                if(correct){
+                                    const payload = {
+                                        id : user.id,
+                                        username : user.username,
+                                        email: user.email
+                                    }
+
+                                    jsonwt.sign(
+                                        payload,
+                                        key,{
+                                            expiresIn:10800
+                                        },(err,token) => {
+                                            if(err) throw err;
+                                            res.json({
+                                                success : true,
+                                                token : "Bearer "+ token
+                                            })
+                                        }
+
+                                    )
+                                }
+                                else{
+                                    res.status(401).json({failed:'Invalid user credentials'});
+                                }
+                            })
+                            .catch(err => console.log("error generating token "+err));
+             })
+})
+
+
+
 module.exports = router;

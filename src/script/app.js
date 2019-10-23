@@ -111,3 +111,37 @@ $("#signinPassword").click(() => {
 })
 
 
+$("#password").keyup((e)=>{
+    e.target.value.length == 0?$('.bar').css('background-color','red')&&$('.bar').css('width','0%'):null;
+    e.target.value.length >=1  &&e.target.value.length <= 3?
+    $('.bar').css('background-color','red')&&$('.bar').css('width','10%'):null;
+    e.target.value.length >= 4 &&e.target.value.length < 6?
+    $('.bar').css('background-color','red')&&$('.bar').css('width','20%'):null;
+    e.target.value.length >= 6 &&e.target.value.length <= 7?
+    $('.bar').css('background-color','red')&&$('.bar').css('width','30%'):null;
+    e.target.value.length >= 8?
+    $('.bar').css('background-color','red')&&$('.bar').css('width','40%'):null;
+    e.target.value.length >= 8&&(e.target.value.match(/[0-9]+/)||
+    e.target.value.match(/[a-z]+/)||e.target.value.match(/[A-Z]+/)||e.target.value.match(/\W|_/g))?
+    $('.bar').css('background-color','red')&&$('.bar').css('width','50%'):null;
+    e.target.value.length >= 8&&((e.target.value.match(/[0-9]+/)&&
+    e.target.value.match(/[a-z]+/))||(e.target.value.match(/[0-9]+/)&&e.target.value.match(/[A-Z]+/))
+    ||(e.target.value.match(/[0-9]+/)&&e.target.value.match(/\W|_/g))||
+    (e.target.value.match(/[a-z]+/)&&e.target.value.match(/[A-Z]+/))||
+    (e.target.value.match(/[a-z]+/)&&e.target.value.match(/\W|_/g))||(e.target.value.match(/[A-Z]+/)&&e.target.value.match(/\W|_/g)))?
+    $('.bar').css('background-color','yellow')&&$('.bar').css('width','60%'):null;
+    e.target.value.length >= 8&&(e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")||
+    e.target.value.match("^(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*\\d).+$")||
+    e.target.value.match("^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\\d).+$")||
+    e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).+$"))?
+    $('.bar').css('background-color','yellow')&&$('.bar').css('width','80%'):null;
+    // e.target.value.length >= 8&&e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\\d).+$")?
+    // $('.bar').css('background-color','green')&&$('.bar').css('width','100%'):null;
+    if(e.target.value.length >= 8&&e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\\d).+$"))
+    {
+        $('.bar').css('background-color','green')&&$('.bar').css('width','100%');
+       passwordStrength = true;
+    }
+    else
+    passwordStrength = false;
+})

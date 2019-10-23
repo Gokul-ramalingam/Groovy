@@ -1,3 +1,7 @@
-.searchbox{
-    border-radius:20px;
+.search-box{
+    border-radius:20px !important;
+}
+
+.details{
+  width: 100vw;
 }

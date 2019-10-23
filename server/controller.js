@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const bodyparser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
@@ -8,14 +9,15 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // routes
-const auth = require('./routes/api/auth.js');
+const auth = require('./routes/api/auth');
 
 //MongoDB configuration
 const db = require('./setup/connection').url;
 
 //Middleware
-app.use(cors())
-app.use(express.urlencoded({extended:true}));
+app.use(bodyparser.urlencoded({extended:false}));
+app.use(bodyparser.json())
+app.use(cors());
 
 //Mongoose connection
 mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})

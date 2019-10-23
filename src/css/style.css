@@ -23,4 +23,61 @@
     padding: 0% 0% 0% 0%;
   }
 
+.signupButton,.signinButton{
+ background-color: #1BCA9B;
+  padding: 2% 10% 2% 10%;
+  border-radius: 50px;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin: 10% 0% 0% 0%;
+}
 
+.form-control{
+    padding: 5% 2% 5% 2%;
+    border-radius: 50px;
+    text-align: center;
+    outline: none;
+}
+
+.progress{
+    margin-top: 3%;
+    width: 70%;
+    height: 5px;
+   margin : 3% auto 0% auto;
+}
+
+.form-group{
+    margin : 7% 0% 0% 0%;
+}
+
+.member{
+    margin: 10%;
+    text-align: left;
+}
+
+.signupButton:hover{
+color: #ffffff;
+background-color: #2ecc72;
+}
+
+.signinButton:hover{
+color: #ffffff;
+background-color: #2ecc72;   
+}
+.signupText{
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.signupText:hover{
+    color: #0A79DF;
+}
+
+.signinText{
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.signinText:hover{
+    color: #0A79DF;
+}

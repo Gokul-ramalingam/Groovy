@@ -36,8 +36,7 @@ $("#signup").click(() => {
             url: "http://localhost:4000/api/auth/register",
             success: (data) => {
                  localStorage.setItem('token',data.token.split(' ')[1]);
-                window.location.href='/src/html/dashboard.html'
-                console.log('data');
+                window.location.href='/src/html/dashboard.html';
             },
             error: () => {
                 $('#signupForm')[0].reset();
@@ -89,29 +88,31 @@ $("#signin").click(() => {
 
 $("#username").click(() => {
     $('#username').css('border','none');
-    $('.usernameError').hide();
+    $('.usernameError,.progress').hide();
 })
 
 $("#email").click(() => {
     $('#email').css('border','none');
+    $('.progress').hide();
 })
 
 $("#password").click(() => {
-    $('.progress').show();
     $('#password').css('border','none')&&$('.passwordError').hide();
 })
 
 $("#signinUsername").click(() => {
     $('#signinUsername').css('border','none');
+    $('.progress').hide();
 })
 
 $("#signinPassword").click(() => {
     $('#signinPassword').css('border','none');
-    $('.signinError').hide();
+    $('.signinError,.progress').hide();
 })
 
 
 $("#password").keyup((e)=>{
+    $('.progress').show();
     e.target.value.length == 0?$('.bar').css('background-color','red')&&$('.bar').css('width','0%'):null;
     e.target.value.length >=1  &&e.target.value.length <= 3?
     $('.bar').css('background-color','red')&&$('.bar').css('width','10%'):null;

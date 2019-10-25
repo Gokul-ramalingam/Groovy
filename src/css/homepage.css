@@ -29,9 +29,47 @@
 .content{
     padding: 0%;
     margin: 0%;
-    height: 70vh;
+    height: 86vh;
     width: 100%;
+    background-image: url('../images/main.jpg');
+    background-size: cover;
 }
+
+.text{
+    color: #FFFFFF;
+    margin: 4% 0% 5% 0%;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.inputBox{
+    justify-content: center;
+    margin:5% 0% 0% 0%;
+}
+
+.search{
+width: 30%;
+border-radius: 50px;
+outline: none;
+border: none;
+padding: 0.5% 2% 0.5% 1.5%;
+background:rgba(255, 255, 255, 0.7);
+}
+::placeholder{
+    color: #000000;  
+}
+
+.button{
+    margin: 0.4% 0% 0% -2.5%;
+    font-size: 1.1em;
+    color: #1BCA9B;
+    cursor: pointer;
+}
+
+.button:hover{
+    color:#0A79DF ;
+}
+
 
 
 

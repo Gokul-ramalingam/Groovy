@@ -15,11 +15,22 @@ router.get('/shops',(req,res) => {
       Shop.find({})
                 .then(shops =>{
                     if(!shops)
-                         return res.json({"noShopFound": "No shop detail found in the collection"});
+                         return res.status(404).json({"noShopFound": "No shop detail found in the collection"});
                     res.json(shops);
                 })
                 .catch(err => console.log("error occured while finding shops list from  collection "+err));
 })
+
+//@type                      GET
+//@route                    /api/shop/:location
+//@description          This route provides details of shops in the given location
+//@access                  Public
+
+router.get('/:location',(req,res) => {
+  res.json({location:req.params.location});
+})
+
+
 
 
 module.exports = router;

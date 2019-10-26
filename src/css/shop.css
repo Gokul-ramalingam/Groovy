@@ -28,9 +28,10 @@
 }
 
 .seat{
-    display: inline-block;
+    /* display: block; */
     height: 5%;
     width: 15%;
     margin: 5%;
     background-color: indianred;
+    text-align: center;
 }

@@ -1,0 +1,36 @@
+.logo{
+    height: 70px;
+    width: 150px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.searchBtn{
+    background-color: #7CEC9F;
+    border: none;
+}
+
+.content{
+    height:86.4vh;
+    background-color: #EAF0F1;
+    justify-content: center;
+}
+
+.list{
+    height: 90%;
+    width: 80%;
+    background-color: #FFFFFF;
+    margin-top: 2%;
+    overflow-y: scroll;
+}
+
+.item{
+    height: 40%;
+    width: 95%;
+    margin: 1% 2.5% 1% 2.5%;
+    background-color: #EAF0F1;
+}
+
+.shopImage{
+    height: 100%;
+}

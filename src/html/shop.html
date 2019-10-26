@@ -8,7 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- font-awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+    
+        <!-- font-awesome -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/shop.css">
@@ -26,7 +28,11 @@
                 <div class="row details">
                     <h2 class="name">Shop Name</h2>
                 </div>
-                <div class="row">
+                <div class="row datePicker">
+                       <input type="date" class="date">
+                       <button class="button"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="row seats">
                     <span class="seat">
                         seat1
                     </span>
@@ -46,9 +52,39 @@
                    seat6
                     </span>
                 </div>
+
+                <div class="row options">
+                        <span class="option">
+                            seat1
+                        </span>
+                        <span class="option">
+                          seat2
+                        </span>
+                        <span class="option">
+                        seat3
+                        </span>
+                        <span class="option">
+                        seat4
+                        </span>
+                        <span class="option">
+                        seat5
+                        </span>
+                        <span class="option">
+                       seat6
+                        </span>
+                 </div>
+                 <div class="row book">
+                     <button class="btn btn-primary bookSeat">Book your seat</button> 
+                     <button class="btn btn-danger cancel">Cancel</button>
+                 </div>
                 </div>
             </div>
         </div>
 </body>
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>                       
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> -->
+<script src="../script/shop.js"></script>
 </html>

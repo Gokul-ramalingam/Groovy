@@ -10,6 +10,7 @@ const port = process.env.PORT || 4000;
 
 // routes
 const auth = require('./routes/api/auth');
+const shop = require('./routes/api/shop');
 
 //MongoDB configuration
 const db = require('./setup/connection').url;
@@ -26,6 +27,7 @@ mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})
 
 //Main Routes
 app.use('/api/auth',auth)
+app.use('/api/shop',shop)
 
 
 //Listening to a port

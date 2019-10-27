@@ -27,21 +27,49 @@ $('.button').click(() => {
     }
 })
 
-let stylistSelected;
-
-let selector = (no) =>{
-    $('.seat').css('color','#000000');
-    $('.seat').css('background-color','indianred');
-    $('.select'+no).css('background-color','#7CEC9F')
-    $('.select'+no).css('color','#FFFFFF');
-    stylistSelected = no;
-    $('.confirm').show();
-}
-
 $('.confirm').click(() =>{
+    $('.seats,.confirm').hide();
+    $('.options').empty();
+    $('.options').show();
     
+    for(let i = 1;i <= shopDetail.options.length;i++)
+    {
+    $('.options').append(
+        ` <span class="option pick${i}" onclick='choose(${i})'>
+            option${i}
+        </span>`
+    )
+    }
 })
 
 
+let selector = (num) =>{
+    $('.seat').css('color','#000000');
+    $('.seat').css('background-color','indianred');
+    $('.select'+num).css('background-color','#7CEC9F')
+    $('.select'+num).css('color','#FFFFFF');
+    $('.confirm').show();
+    localStorage.setItem('stylist',num);
+}
+
+let optionSelected = [];
+let choose = (num) =>{
+    $('.pick'+num).css('background-color','#7CEC9F')
+    $('.pick'+num).css('color','#FFFFFF');
+    optionSelected.push(num);
+    $('.book').show();
+}
+
+$('.resetSeat').click(() =>{
+    $('.option').css('color','#000000');
+    $('.option').css('background-color','indianred');
+    optionSelected.length = 0;
+})
+
+$('.cancel').click(() =>{
+   $('.options').hide();
+   $('.seats').show();
+   $('.book').hide();
+})
 
 

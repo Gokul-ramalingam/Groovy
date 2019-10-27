@@ -71,12 +71,15 @@ $('.cancel').click(() => {
 $('.bookSeat').click(() => {
     if (optionSelected.length >= 1) {
         let total = 0;
-        for (let i = 0; i < optionSelected.length; i++)
-            total += shopDetail.options[optionSelected[i] - 1].price;
-        dataString = {}
+        let dataString = {}
         dataString.shopname = shopDetail.name;
+        dataString.options = [];
+        for (let i = 0; i < optionSelected.length; i++)
+        {
+            dataString.options.push(shopDetail.options[optionSelected[i]-1]);
+            total += shopDetail.options[optionSelected[i] - 1].price;
+        }
         dataString.payment = total;
-        dataString.options = optionSelected;
 
         $.ajax({
             type: "POST",

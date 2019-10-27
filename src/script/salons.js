@@ -1,13 +1,6 @@
-$('.logo').click(() => {
- window.location.href = '../html/homepage.html';
-})
-
-$('.button').click(() => {
-    window.location.href = '../html/shop.html';
-})
-
 $(document).ready(() => {
     let shops = JSON.parse(localStorage.getItem("shops"));
+    let id = 0;
    shops.forEach(shop => {
     $('.list').append(
         `<div class="row item">
@@ -19,9 +12,18 @@ $(document).ready(() => {
            <span class="address">Shop no 3, Siilver Pearl,Panchsheel, 213, 30th Road, Waterfield Road,bandra west, 400050, Bandra West</span><br>
            <span class="stylists">No of stylists: <b>5</b></span>
            <br>
-           <button id='0' class="button"><b>></b></button>
+           <button class="button" onclick="view(${id})"><b>></b></button>
           </div>
       </div>`
     )
+    id++;
    })
 })
+
+$('.logo').click(() => {
+ window.location.href = '../html/homepage.html';
+})
+
+let view = (id) => {
+    window.location.href = '../html/shop.html#'+id;
+}

@@ -53,34 +53,37 @@ router.get('/:location',(req,res) => {
 //                 }
 // }
 
-let quick_sort = (a, low, high) =>
+
+//Quick Sort Algorithm
+
+let quick_sort = (array, low, high) =>
 {
     let k;
     let i, j, flag = 1;
     if (low < high) {
-        k = numberFinder(a,low);
+        k = numberFinder(array,low);
         i = low + 1;
         j = high;
         while (flag) {
-            while ((numberFinder(a,i) <= k) && (i < j)) i++; while (numberFinder(a,j)> k)
+            while ((numberFinder(array,i) <= k) && (i < j)) i++; while (numberFinder(array,j)> k)
                 j--;
             if (i < j)
-                swap(a, i, j);
+                swap(array, i, j);
             else
                 flag = 0;
         }
-        swap(a, low, j);
-        quick_sort(a, low, j - 1);
-        quick_sort(a, j + 1, high);
+        swap(array, low, j);
+        quick_sort(array, low, j - 1);
+        quick_sort(array, j + 1, high);
     }
 }
 
-function swap(a,x,y)
+let swap = (array,x,y) =>
 {
     let temp;
-    temp = a[x];
-    a[x] = a[y];
-    a[y] = temp;
+    temp = array[x];
+    array[x] = array[y];
+    array[y] = temp;
 }
 
 let numberFinder = (a,i) => {

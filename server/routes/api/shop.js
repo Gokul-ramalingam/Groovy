@@ -36,22 +36,34 @@ router.get('/:location',(req,res) => {
             })
 })
 
-// let check = (shops) =>{
-//     for(let i = 1;i < shops.length;i++)
-//                 {
-//                     let j = i-1;
-//                     // let x = Number(JSON.parse(JSON.stringify(shops[i])).distance.match(/[0-9.]+/g));
-//                     // let y = Number(JSON.parse(JSON.stringify(shops[i-1])).distance.match(/[0-9.]+/g));
-//                     let x = JSON.parse(JSON.stringify(shops[i])).distance.includes('km')?
-//                     parseFloat(JSON.parse(JSON.stringify(shops[i])).distance.match(/[0-9.]+/g))*1000:
-//                     parseInt(JSON.parse(JSON.stringify(shops[i])).distance.match(/[0-9.]+/g));
-//                     let y = JSON.parse(JSON.stringify(shops[j])).distance.includes('km')?
-//                     parseFloat(JSON.parse(JSON.stringify(shops[j])).distance.match(/[0-9.]+/g))*1000:
-//                     parseInt(JSON.parse(JSON.stringify(shops[j])).distance.match(/[0-9.]+/g));
-//                     console.log(x+" "+y);  
-                   
-//                 }
-// }
+
+//@type                      GET
+//@route                    /api/shop/savings/shopname
+//@description          This route provides details of shops in the given location
+//@access                  Public
+
+router.get('/savings/:shopname',(req,res) => {
+
+    Shop.findOne({name:req.params.shopname})
+             .then(shop => {
+                if(!shop)
+                    return res.status(400).json({"Error":"Shop with the given name not found"})
+                let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                console.log();
+                 if(JSON.parse(JSON.stringify(shop)).offers.includes(months[new Date().getMonth()]))
+                    return res.json({"availOffer":"You can save money by availing the offer"})
+                res.json({"noOffer" : "Sorry no offer available for this month"})
+             })
+
+})
+
+
+
+
+
+
+
+
 
 
 //Quick Sort Algorithm

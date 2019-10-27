@@ -23,11 +23,11 @@ app.use(cors());
 //Mongoose connection
 mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})
                     .then(() => console.log('Connected to MongoDB Successfully......'))
-                    .catch(err => console.log('Error occured while connecting MongoDB '+err))
+                    .catch(err => console.log('Error occured while connecting MongoDB '+err));
 
 //Main Routes
-app.use('/api/auth',auth)
-app.use('/api/shop',shop)
+app.use('/api/auth',auth);
+app.use('/api/shop',shop);
 
 
 //Listening to a port

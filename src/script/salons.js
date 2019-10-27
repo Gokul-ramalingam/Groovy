@@ -10,7 +10,7 @@ $(document).ready(() => {
         <div class="col-12 col-md-8 shopName">
            <h3>${shop.name}</h3>
            <span class="address">${shop.address}</span><br>
-           <span class="stylists">No of stylists: <b>${shop.stylists}</b></span>
+           <span class="stylists">Distance: <b>${shop.distance}</b></span>
            <br>
            <button class="button" onclick="view(${id})"><b>></b></button>
           </div>

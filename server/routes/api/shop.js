@@ -58,6 +58,15 @@ router.get('/savings/:shopname',(req,res) => {
 })
 
 
+//@type                      POST
+//@route                    /api/shop/booking
+//@description          This route is for booking appointment
+//@access                  Public
+
+router.post('/booking',(req,res) => {
+    const {shopname,options,payment} = req.body;
+})
+
 
 
 

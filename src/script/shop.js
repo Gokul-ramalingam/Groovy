@@ -1,7 +1,7 @@
 let shopDetail = 0;
 
 $(document).ready(() => {
-    $('.seats,.options,.book').hide();
+    $('.seats,.options,.book,.confirm').hide();
     shopDetail = JSON.parse(localStorage.getItem('shops'))[window.location.hash.slice(1,)];
     $('.name').text(shopDetail.name);
 })
@@ -27,12 +27,21 @@ $('.button').click(() => {
     }
 })
 
+let stylistSelected;
+
 let selector = (no) =>{
     $('.seat').css('color','#000000');
     $('.seat').css('background-color','indianred');
     $('.select'+no).css('background-color','#7CEC9F')
     $('.select'+no).css('color','#FFFFFF');
+    stylistSelected = no;
+    $('.confirm').show();
 }
+
+$('.confirm').click(() =>{
+    
+})
+
 
 
 

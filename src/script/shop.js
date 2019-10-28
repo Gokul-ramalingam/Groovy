@@ -7,11 +7,12 @@ $(document).ready(() => {
 })
 
 $('.button').click(() => {
+    $('.seats,.options').empty();
+    $('.book,.confirm').hide();
     let dateArray = $('.date').val().split("-");
     let date = new Date();
     if (dateArray[0] == date.getFullYear() || dateArray[0] == date.getFullYear() + 1) {
         if (dateArray[1] >= date.getMonth() + 1 && dateArray[2] >= date.getDate()) {
-            $('.seats').empty();
             $('.seats').show();
             for (let i = 1; i <= shopDetail.stylists; i++) {
                 $('.seats').append(
@@ -84,8 +85,11 @@ $('.bookSeat').click(() => {
         $.ajax({
             type: "POST",
             data: JSON.stringify(dataString),
-            contentType: "application/json",
             url: "http://localhost:4000/api/shop/booking",
+            headers: {
+                "Content-Type":"application/x-www-form-urlencoded",
+                "Authorization":localStorage.getItem('token')
+            },
             success: (data) => {
            console.log(data);
             },

@@ -27,7 +27,11 @@ const bookingSchema = new Schema({
      type  : Number,
      required:true
  },
- Date:{
+ bookingDate:{
+     type : String,
+     required: true
+ },
+ PresentDate:{
      type : Date,
      default: Date.now()
  }

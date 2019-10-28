@@ -65,10 +65,21 @@ router.get('/savings/:shopname',(req,res) => {
 //@access                  Public
 
 router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) => {
-    // const {shopname,options,payment} = req.body;
+    const {id,shopname,options,payment,date} = req.body;
     User.findOne({_id:req.user.id})
             .then(user =>{
-                console.log(req.user.username);       
+                if(!user)    
+                   return res.status(400).json({"unauthorized":"Session timeout login again"})
+                const  newBooking = new Booking({
+                     user : req.user.id,
+                     username : req.user.username,
+                     shop:id,
+                     shopname:shopname,
+                     service : options,
+                     payment : payment,
+                     bookingDate: date
+                 })
+                 console.log(newBooking);
             })
             .catch(() => console.log('error occured while authorizing'))
 })

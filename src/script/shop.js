@@ -14,10 +14,10 @@ $('.button').click(() => {
     if (dateArray[0] == date.getFullYear() || dateArray[0] == date.getFullYear() + 1) {
         if (dateArray[1] >= date.getMonth() + 1 && dateArray[2] >= date.getDate()) {
             $('.seats').show();
-            for (let i = 1; i <= shopDetail.stylists; i++) {
+            for (let i = 1; i <= shopDetail.stylists.length; i++) {
                 $('.seats').append(
                     `<span class="seat select${i}" onclick='selector(${i})'>
-                    stylist${i}
+                    ${shopDetail.stylists[i-1]}
                 </span>`
                 )
             }
@@ -35,7 +35,7 @@ $('.confirm').click(() => {
     for (let i = 1; i <= shopDetail.options.length; i++) {
         $('.options').append(
             ` <span class="option pick${i}" onclick='choose(${i})'>
-            option${i}
+            ${shopDetail.options[i-1].type}
         </span>`
         )
     }
@@ -94,7 +94,8 @@ $('.bookSeat').click(() => {
                 "Content-Type":"application/json",
                 "Authorization":localStorage.getItem('token')
             },
-            success: () => {
+            success: (data) => {
+             localStorage.setItem("bookingId",data.id);
              window.location.href = "summary.html#"+window.location.hash.slice(1, );
             },
             error: (err) => {

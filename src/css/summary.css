@@ -15,9 +15,8 @@
     object-fit: contain;
 }
 
-.savings{
-    height: 15%;
-}
 .detail{
     background-color: #F0DF87;
+    height: 50px;
+    align-items: center;
 }

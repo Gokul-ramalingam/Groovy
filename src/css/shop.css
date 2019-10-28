@@ -41,17 +41,24 @@
 .date{
     outline: none;
     border: none;
-    width: 30%;
-    padding: .5%;
+    width: 45%;
+    padding: .5% 1% .5% 1%;
     border-radius: 50px;
 }
 
 .button{
-    border-radius: 50px;
-    background-color: #7CEC9F;
-    padding: 0% 1.5% 0% 1.5%;
+    margin: 0% 0% 0.5% 2%;
     border: none;
     outline: none;
+    font-size: 1.2em;
+}
+
+.button:hover{
+    color: #0A79DF;
+    }
+.button:focus {
+    outline: 0;
+    box-shadow: none!important;
 }
 
 .book{

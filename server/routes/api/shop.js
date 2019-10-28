@@ -62,7 +62,8 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                                    "payment" :booking.payment
                                 })
                                 }
-                                    discount =booking.payment/10;
+                                    console.log(JSON.parse(JSON.stringify(shop)).discount);
+                                    discount =booking.payment/JSON.parse(JSON.stringify(shop)).discount;
                                     res.json({
                                         "shopname" : booking.shopname,
                                         "discount"    : discount,
@@ -109,11 +110,6 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
             })
             .catch(err => console.log('error occured while authorizing '+err))
 })
-
-
-
-
-
 
 
 

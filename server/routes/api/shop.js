@@ -49,24 +49,22 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                 if(!shop)
                     return res.status(400).json({"Error":"Shop with the given name not found"})
                 let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                var discount = 0;
                 Booking.findOne({_id:req.params.bookingId})
                                .then(booking =>{
                                 if(!JSON.parse(JSON.stringify(shop)).offers.includes(months[booking.bookingDate.slice(5,7)-1]))
                                 {
                                    return res.json({
                                    "shopname" : booking.shopname,
-                                   "discount"     :discount,
+                                   "discount"     :0,
                                    "service"     : booking.service,
                                    "bookingDate":booking.bookingDate,
                                    "payment" :booking.payment
                                 })
                                 }
-                                    console.log(JSON.parse(JSON.stringify(shop)).discount);
-                                    discount =booking.payment/JSON.parse(JSON.stringify(shop)).discount;
+        
                                     res.json({
                                         "shopname" : booking.shopname,
-                                        "discount"    : discount,
+                                        "discount"    : booking.discount,
                                         "service"       : booking.service,
                                         "bookingDate":booking.bookingDate,
                                         "payment"    :booking.payment
@@ -84,7 +82,7 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
 //@access                  Public
 
 router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) => {
-    const {id,shopname,options,payment,date} = req.body;
+    const {id,shopname,options,payment,date,discount} = req.body;
     User.findOne({_id:req.user.id})
             .then(user =>{
                 if(!user)    
@@ -96,6 +94,7 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
                      shopname:shopname,
                      service : options,
                      payment : payment,
+                     discount:discount,
                      bookingDate: date
                  })
                  newBooking.save()

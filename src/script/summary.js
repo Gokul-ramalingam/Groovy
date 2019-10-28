@@ -18,7 +18,7 @@ $(document).ready(() => {
         })
         $('.services').append(`<br><span>Discount</span><br><b>Payment<b>
                                                 `)
-        $('.price').append(`<br><span>${data.discount}</span><br><b>
+        $('.price').append(`<br><span>RS.${data.discount}</span><br><b>
                                          RS.${data.payment}
                                          </b>`)
         }

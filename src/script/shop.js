@@ -95,7 +95,7 @@ $('.bookSeat').click(() => {
                 "Authorization":localStorage.getItem('token')
             },
             success: () => {
-             window.location.href = "summary.html";
+             window.location.href = "summary.html#"+window.location.hash.slice(1, );
             },
             error: (err) => {
            console.log("error occured while booking an appointment "+err)

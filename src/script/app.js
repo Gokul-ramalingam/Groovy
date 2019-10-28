@@ -35,7 +35,7 @@ $("#signup").click(() => {
             contentType: "application/json",
             url: "http://localhost:4000/api/auth/register",
             success: (data) => {
-                 localStorage.setItem('token',data.token.split(' ')[1]);
+                 localStorage.setItem('token',data.token);
                 window.location.href='/src/html/homepage.html';
             },
             error: () => {
@@ -69,7 +69,7 @@ $("#signin").click(() => {
             contentType: "application/json",
             url: "http://localhost:4000/api/auth/login",
             success: (data) => {
-                localStorage.setItem('token',data.token.split(' ')[1]);
+                localStorage.setItem('token',data.token);
                 window.location.href='/src/html/homepage.html'
             },
             error: () => {

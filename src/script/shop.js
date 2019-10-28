@@ -24,12 +24,14 @@ $('.button').click(() => {
         }
     }
 })
-
+let date;
 $('.confirm').click(() => {
     $('.seats,.confirm').hide();
     $('.options').empty();
     $('.options').show();
-
+    date=$('.date').val();
+    if(date !== '')
+    {
     for (let i = 1; i <= shopDetail.options.length; i++) {
         $('.options').append(
             ` <span class="option pick${i}" onclick='choose(${i})'>
@@ -37,6 +39,7 @@ $('.confirm').click(() => {
         </span>`
         )
     }
+}
 })
 
 
@@ -73,6 +76,7 @@ $('.bookSeat').click(() => {
     if (optionSelected.length >= 1) {
         let total = 0;
         let dataString = {}
+        dataString.id = shopDetail._id;
         dataString.shopname = shopDetail.name;
         dataString.options = [];
         for (let i = 0; i < optionSelected.length; i++)
@@ -81,13 +85,13 @@ $('.bookSeat').click(() => {
             total += shopDetail.options[optionSelected[i] - 1].price;
         }
         dataString.payment = total;
-
+        dataString.date = date;
         $.ajax({
             type: "POST",
             data: JSON.stringify(dataString),
             url: "http://localhost:4000/api/shop/booking",
             headers: {
-                "Content-Type":"application/x-www-form-urlencoded",
+                "Content-Type":"application/json",
                 "Authorization":localStorage.getItem('token')
             },
             success: (data) => {

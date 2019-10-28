@@ -7,6 +7,7 @@
 }
 .content{
     text-align: center;
+    margin: 5% 0% 0% 0%;
 }
 
 .orderImage{
@@ -15,8 +16,9 @@
     object-fit: contain;
 }
 
+.savings{
+    height: 10%;
+}
 .detail{
     background-color: #F0DF87;
-    height: 50px;
-    align-items: center;
 }

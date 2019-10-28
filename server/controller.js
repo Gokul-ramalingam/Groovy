@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const bodyparser = require('body-parser');
+const passport = require('passport');
 const cors = require('cors');
 
 const app = express();
@@ -24,6 +24,14 @@ app.use(cors());
 mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})
                     .then(() => console.log('Connected to MongoDB Successfully......'))
                     .catch(err => console.log('Error occured while connecting MongoDB '+err));
+
+
+//Passport Middleware
+app.use(passport.initialize())
+
+//Config JWT Strategy
+require('./strategies/jsonjwtStrategy')(passport);
+
 
 //Main Routes
 app.use('/api/auth',auth);

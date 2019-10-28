@@ -1,0 +1,23 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+.row{
+    justify-content: center;
+}
+.content{
+    text-align: center;
+}
+
+.orderImage{
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+}
+
+.savings{
+    height: 15%;
+}
+.detail{
+    background-color: #F0DF87;
+}

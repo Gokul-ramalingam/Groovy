@@ -16,14 +16,9 @@
     object-fit: contain;
 }
 
-.savings{
-    height: 10%;
-}
-.detail{
-    background-color: #F0DF87;
+.payment{
+    background-color: #7CEC9F;
+    margin: 3% 0% 0% 0%;
+    padding: 3% 0% 3% 0%;
 }
 
-.payment{
-    background-color: #74B9FF;
-    margin: 3% 0% 0% 0%;
-}

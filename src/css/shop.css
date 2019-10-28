@@ -60,6 +60,7 @@
 
 .book{
     justify-content: center;
+    margin: 5% 0% 5% 0%;
 }
 
 .resetSeat,.cancel{
@@ -67,5 +68,5 @@
 }
 
 .confirm{
-    margin: 0% 0% 5% 0%;
+    margin: 5% 0% 5% 0%;
 }

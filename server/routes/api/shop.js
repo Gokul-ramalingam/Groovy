@@ -54,15 +54,21 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                                .then(booking =>{
                                 if(!JSON.parse(JSON.stringify(shop)).offers.includes(months[booking.bookingDate.slice(5,7)]))
                                 {
-                                   return res.json({"noOffer" : "No offer available for this month"})
+                                   return res.json({
+                                   "shopname" : booking.shopname,
+                                   "discount"     :discount,
+                                   "service"     : booking.service,
+                                   "bookingDate":booking.bookingDate,
+                                   "payment" :booking.payment
+                                })
                                 }
                                     discount =booking.payment/10;
                                     res.json({
                                         "shopname" : booking.shopname,
-                                        "availOffer":"You have saved RS."+discount,
-                                        "service"     : booking.service,
+                                        "discount"    : discount,
+                                        "service"       : booking.service,
                                         "bookingDate":booking.bookingDate,
-                                        "payment" :booking.payment
+                                        "payment"    :booking.payment
                                 })
                                } )
                                .catch(err => console.log("Error occured while finding discount "+err));

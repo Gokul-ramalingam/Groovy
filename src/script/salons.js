@@ -4,15 +4,18 @@ $(document).ready(() => {
    shops.forEach(shop => {
     $('.list').append(
         `<div class="row item">
-        <div class="col-12 col-md-3 img d-none d-sm-block d-sm-none">
-        <img src="../images/home.png" alt="shop image" class="shopImage">
+        <div class="col-3 img d-none d-sm-block d-sm-none">
+        <img src="../images/home.png" alt="shop image" class="img-fluid shopImage">
        </div>
-        <div class="col-12 col-md-8 shopName">
+        <div class="col-9 shopName">
            <h3>${shop.name}</h3>
            <span class="address">${shop.address}</span><br>
-           <span class="stylists">Distance: <b>${shop.distance}</b></span>
+           <span class="stylists">No of stylists: <b>${shop.stylists.length}</b></span><br>
+           <span class="distance">Distance: <b>${shop.distance}</b></span>
            <br>
-           <button class="button" onclick="view(${id})"><b>></b></button>
+           <div class="row buttonContainer">
+           <button class="button" onclick="view(${id})"><b><i class="fa fa-arrow-right"></i></b></button>
+           </div>
           </div>
       </div>`
     )

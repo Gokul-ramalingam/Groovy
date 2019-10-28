@@ -43,17 +43,24 @@ router.get('/:location',(req,res) => {
 //@description          This route provides details of shops in the given location
 //@access                  Public
 
-router.get('/savings/:shopname',(req,res) => {
-
+router.get('/savings/:shopname/:bookingId',(req,res) => {
     Shop.findOne({name:req.params.shopname})
              .then(shop => {
                 if(!shop)
                     return res.status(400).json({"Error":"Shop with the given name not found"})
                 let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                console.log();
-                 if(JSON.parse(JSON.stringify(shop)).offers.includes(months[new Date().getMonth()]))
-                    return res.json({"availOffer":"You can save money by availing the offer"})
-                res.json({"noOffer" : "Sorry no offer available for this month"})
+                 if(!JSON.parse(JSON.stringify(shop)).offers.includes(months[new Date().getMonth()]))
+                 {
+                    res.json({"noOffer" : "No offer available for this month"})
+                 }
+                var discount = 0;
+                Booking.findOne({_id:req.params.bookingId})
+                               .then(booking =>{
+                                   if(booking)
+                                    discount =booking.payment/10;
+                                    res.json({"availOffer":"You have saved RS."+discount})
+                               } );
+                
              })
 
 })
@@ -83,7 +90,7 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
                  .then(booked=>{
                      if(!booked)
                       return res.status(400).json({"bookingFailed":"Something went wrong while booking your appointment please try again"})
-                     res.json({"booked":"Successfully booked your appointment"})
+                     res.json({"id":booked._id})
                  })
                  .catch(err =>{
                      console.log("Something went wrong while booking your appointment please try again "+err);

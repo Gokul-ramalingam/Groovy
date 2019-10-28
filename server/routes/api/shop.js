@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const jsonwt = require('jsonwebtoken');
 const key = require('../../setup/connection').secret;
+const passport = require('passport');
 
 const Shop = require('../../models/Shop');
+
+const Booking = require('../../models/Booking');
 
 //@type                      GET
 //@route                    /api/shop/shops
@@ -63,8 +64,13 @@ router.get('/savings/:shopname',(req,res) => {
 //@description          This route is for booking appointment
 //@access                  Public
 
-router.post('/booking',(req,res) => {
-    const {shopname,options,payment} = req.body;
+router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) => {
+    // const {shopname,options,payment} = req.body;
+    User.findOne({_id:req.user.id})
+            .then(user =>{
+                console.log(req.user.username);       
+            })
+            .catch(() => console.log('error occured while authorizing'))
 })
 
 

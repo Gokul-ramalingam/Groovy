@@ -79,7 +79,13 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
                      payment : payment,
                      bookingDate: date
                  })
-                 console.log(newBooking);
+                 newBooking.save()
+                 .then(()=>{
+                     res.json({"booked":"Successfully booked your appointment"})
+                 })
+                 .catch(() =>{
+                     res.status(400).json({"notBooked":"Something went wrong while booking your appointment please try again"})
+                 })
             })
             .catch(() => console.log('error occured while authorizing'))
 })

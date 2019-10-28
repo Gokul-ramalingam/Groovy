@@ -23,7 +23,7 @@
 }
 
 .container-fluid{
-     background-color: #EAF0F1; 
+     background-color: #0F0F0F; 
 }
 
 .content{
@@ -45,11 +45,14 @@
 .inputBox{
     justify-content: center;
     margin:5% 0% 0% 0%;
+    position: relative;
 }
 
 .search{
-width: 30%;
+/* width: 30%; */
 border-radius: 50px;
+width: 250px;
+height: 32px;
 outline: none;
 border: none;
 padding: 0.5% 2% 0.5% 1.5%;
@@ -60,16 +63,14 @@ background:rgba(255, 255, 255, 0.7);
 }
 
 .button{
-    margin: 0.4% 0% 0% -2.5%;
+    position: absolute;
+    margin: 0.3% 0% 0% 8%;
     font-size: 1.1em;
     color: #1BCA9B;
     cursor: pointer;
+    z-index: 20;
 }
 
 .button:hover{
     color:#0A79DF ;
 }
-
-
-
-

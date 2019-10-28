@@ -52,7 +52,7 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                 var discount = 0;
                 Booking.findOne({_id:req.params.bookingId})
                                .then(booking =>{
-                                if(!JSON.parse(JSON.stringify(shop)).offers.includes(months[booking.bookingDate.slice(5,7)]))
+                                if(!JSON.parse(JSON.stringify(shop)).offers.includes(months[booking.bookingDate.slice(5,7)-1]))
                                 {
                                    return res.json({
                                    "shopname" : booking.shopname,

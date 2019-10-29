@@ -31,6 +31,9 @@ const bookingSchema = new Schema({
   type:Number,
   required: true
  },
+ paymentAfterDiscount:{
+     type:Number
+ },
  bookingDate:{
      type : String,
      required: true

@@ -1,3 +1,18 @@
+$(document).ready(() =>{
+    $.ajax({
+        type : "GET",
+        url    : "http://localhost:4000/api/auth/verify",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization":localStorage.getItem('token')
+        },
+        error : () =>{
+            document.location.href="/";
+        }
+    })
+})
+
+
 $('.button').click(() => {
     $.ajax({
         type         : "GET",

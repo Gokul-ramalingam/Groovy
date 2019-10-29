@@ -1,6 +1,17 @@
 let shopDetail = 0;
 
 $(document).ready(() => {
+    $.ajax({
+        type : "GET",
+        url    : "http://localhost:4000/api/auth/verify",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization":localStorage.getItem('token')
+        },
+        error : () =>{
+            document.location.href="/";
+        }
+    })
     $('.seats,.options,.book,.confirm').hide();
     shopDetail = JSON.parse(localStorage.getItem('shops'))[window.location.hash.slice(1, )];
     $('.name').text(shopDetail.name);

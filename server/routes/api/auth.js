@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jsonwt = require('jsonwebtoken');
 const key = require('../../setup/connection').secret;
-
+const passport = require('passport');
 
 const User = require('../../models/User');
 
@@ -113,6 +113,22 @@ router.post('/login',(req,res)=>{
                             })
                             .catch(err => console.log("error generating token "+err));
              })
+})
+
+
+// @type             GET 
+// @route          /api/auth/verify
+// @desc           This route is for user lauthorization
+// @access       PRIVATE
+router.get('/verify',passport.authenticate('jwt',{session:false}),(req,res)=>{
+           
+           User.findOne({_id : req.user.id})
+                    .then(user =>{
+                        if(!user)
+                          return res.status(404).json({"error":"User not found"});
+                        res.status(200).json({"sucess":"Authorization Success"}); 
+                    })
+                    .catch(err => console.log("Error finding user in verify route "+err))
 })
 
 

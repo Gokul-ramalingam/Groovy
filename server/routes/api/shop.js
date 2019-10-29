@@ -61,15 +61,18 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                                    "payment" :booking.payment
                                 })
                                 }
-        
-                                    res.json({
-                                        "shopname" : booking.shopname,
-                                        "discount"    : booking.discount,
-                                        "service"       : booking.service,
-                                        "bookingDate":booking.bookingDate,
-                                        "payment"    :booking.payment
-                                })
-                               } )
+                                  Booking.updateOne({_id:booking._id},{paymentAfterDiscount : booking.payment - (booking.payment*(booking.discount/100))})
+                                                 .then(() => console.log("Successfully updated paymentAfterDiscount property"))
+                                                 .catch(err => console.log("Error occured while updating salesPrice "+err));
+
+                             res.json({
+                                             "shopname" : booking.shopname,
+                                              "discount"    :booking.payment*(booking.discount/100),
+                                              "service"       : booking.service,
+                                              "bookingDate":booking.bookingDate,
+                                              "payment"    :booking.payment - (booking.payment*(booking.discount/100))
+                                            })
+                            })
                                .catch(err => console.log("Error occured while finding discount "+err));
              })
 

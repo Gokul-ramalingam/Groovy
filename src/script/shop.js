@@ -93,9 +93,9 @@ $('.bookSeat').click(() => {
             dataString.options.push(shopDetail.options[optionSelected[i]-1]);
             total += shopDetail.options[optionSelected[i] - 1].price;
         }
-        dataString.payment =total - (total*(shopDetail.discount/100));
+        dataString.payment =total;
         dataString.date = date;
-        dataString.discount = total*(shopDetail.discount/100);
+        dataString.discount =shopDetail.discount;
         $.ajax({
             type: "POST",
             data: JSON.stringify(dataString),

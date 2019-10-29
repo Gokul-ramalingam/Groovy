@@ -35,12 +35,17 @@
    margin: 5% 0% 3% 0%;
 }
 
-.date{
+.date,.time{
     outline: none;
     border: none;
     width: 45%;
     padding: .5% 1% .5% 1%;
     border-radius: 50px;
+}
+
+.time{
+    width: 25%;
+    margin: 0% 0% 0% 3%;
 }
 
 .button{

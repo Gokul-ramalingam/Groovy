@@ -1,7 +1,31 @@
+body{
+  overflow: hidden;
+}
+
 .search-box{
     border-radius:20px !important;
 }
 
 .details{
   width: 100vw;
+}
+.searchButton{
+  border-radius:20px; 
+  background:#7CEC9F;;
+  height:20%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sea{
+  position: fixed;
+  top: 0%;
+  z-index: 1;
+}
+
+.list{
+width: 80%;
+height: 80%;
+overflow-y: scroll;
 }

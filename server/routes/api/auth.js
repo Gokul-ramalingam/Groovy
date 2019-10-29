@@ -15,7 +15,7 @@ router.post('/register',(req,res) => {
 
     const {username,email,password} = req.body;
 
-User.findOne({email})
+User.findOne({username})
          .then(user => {
              if(user){
                  return res.status(400).json({
@@ -77,7 +77,7 @@ User.findOne({email})
 router.post('/login',(req,res)=>{
     const email        = req.body.email;
     const password = req.body.password;
-    User.findOne({email : email})
+    User.findOne({email})
              .then(user => {
                  if(!user)
                     return res.status(404).send({

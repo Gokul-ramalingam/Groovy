@@ -1,0 +1,72 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+.content{
+    justify-content: center;
+    height: 100vh;
+}
+
+.data{
+    background-color: #DAE0E2;
+}
+
+.image{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.details{
+    justify-content: center;
+}
+
+.seat,.option{
+    width: 20%; 
+    margin: 2%;
+    background-color: indianred;
+    text-align: center;
+    cursor: pointer;
+}
+
+.datePicker{
+   justify-content: center;
+   margin: 5% 0% 3% 0%;
+}
+
+.date{
+    outline: none;
+    border: none;
+    width: 45%;
+    padding: .5% 1% .5% 1%;
+    border-radius: 50px;
+}
+
+.button{
+    margin: 0% 0% 0.5% 2%;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+}
+
+.button:hover{
+    color: #0A79DF;
+    }
+.button:focus {
+    outline: 0;
+    box-shadow: none!important;
+}
+
+.book{
+    justify-content: center;
+    margin: 5% 0% 5% 0%;
+}
+
+.resetSeat,.cancel{
+    margin: 0% 0% 0% 3%;
+}
+
+.confirm{
+    margin: 5% 0% 5% 0%;
+}

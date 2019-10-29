@@ -1,0 +1,76 @@
+.logo{
+    height: 70px;
+    width: 150px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.navbar{
+    background-color: #ffffff;
+}
+
+.container-fluid{
+    padding: 0%;
+    margin: 0%;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.navSearch:focus{
+    box-shadow: none;
+}
+
+.container-fluid{
+     background-color: #0F0F0F; 
+}
+
+.content{
+    padding: 0%;
+    margin: 0%;
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/main.jpg');
+    background-size: cover;
+}
+
+.text{
+    color: #FFFFFF;
+    margin: 4% 0% 5% 0%;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.inputBox{
+    justify-content: center;
+    margin:5% 0% 0% 0%;
+    position: relative;
+}
+
+.search{
+/* width: 30%; */
+border-radius: 50px;
+width: 250px;
+height: 32px;
+outline: none;
+border: none;
+padding: 0.5% 2% 0.5% 1.5%;
+background:rgba(255, 255, 255, 0.7);
+}
+::placeholder{
+    color: #000000;  
+}
+
+.button{
+    position: absolute;
+    margin: 0.3% 0% 0% 8%;
+    font-size: 1.1em;
+    color: #1BCA9B;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.button:hover{
+    color:#0A79DF ;
+}

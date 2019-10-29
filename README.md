@@ -11,3 +11,13 @@ This application is build for Haircut Management.Customers can use this applicat
 * Express JS
 * Passport JS
 * MongoDB
+
+## Preview
+
+![Initial Window](readme/first.png)
+![Initial Window](readme/second.png)
+![Initial Window](readme/third.png)
+![Initial Window](readme/fourth.png)
+![Initial Window](readme/fifth.png)
+![Initial Window](readme/sixth.png)
+![Initial Window](readme/seventh.png)

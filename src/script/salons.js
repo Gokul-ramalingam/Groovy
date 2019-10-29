@@ -1,4 +1,15 @@
 $(document).ready(() => {
+    $.ajax({
+        type : "GET",
+        url    : "http://localhost:4000/api/auth/verify",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization":localStorage.getItem('token')
+        },
+        error : () =>{
+            document.location.href="/";
+        }
+    })
     let shops = JSON.parse(localStorage.getItem("shops"));
     let id = 0;
    shops.forEach(shop => {

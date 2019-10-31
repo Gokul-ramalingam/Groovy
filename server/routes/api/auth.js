@@ -75,9 +75,9 @@ User.findOne({username})
 // @desc           This route is for user login
 // @access       PUBLIC
 router.post('/login',(req,res)=>{
-    const username       = req.body.username;
+    const email        = req.body.email;
     const password = req.body.password;
-    User.findOne({username})
+    User.findOne({email})
              .then(user => {
                  if(!user)
                     return res.status(404).send({

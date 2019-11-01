@@ -37,16 +37,16 @@ let addStylist = () => {
     $('.seats').show();
             for (let i = 1; i <= shopDetail.stylists.length; i++) {
                 $('.seats').append(
-                    `<span class="seat select${i}" onclick='selector(${i})'>
-                    ${shopDetail.stylists[i-1]}
-                </span>`
+                    `<div class="col-3.5 seat" onclick='selector(${i})'>
+                    <i class="fa fa-wheelchair select${i} selection"><div class="name">${shopDetail.stylists[i-1]}</div></i>
+                </div>`
                 )
             }
 }
 
 let date;
 $('.confirm').click(() => {
-    $('.seats,.confirm').hide();
+    $('.datePicker,.seats,.confirm').hide();
     $('.options').empty();
     $('.options').show();
     date=$('.date').val();
@@ -62,12 +62,13 @@ $('.confirm').click(() => {
 }
 })
 
-
+let prev;
 let selector = (num) => {
-    $('.seat').css('color', '#000000');
-    $('.seat').css('background-color', 'indianred');
-    $('.select' + num).css('background-color', '#7CEC9F')
-    $('.select' + num).css('color', '#FFFFFF');
+    $('.select' + prev).css('color', '#A4B0BD');
+     prev = num;
+    // $('.seat').css('background-color', 'indianred');
+    // $('.select' + num).css('background-color', '#7CEC9F')
+    $('.select' + num).css('color', '#000000');
     $('.confirm').show();
     localStorage.setItem('stylist', num);
 }
@@ -82,14 +83,13 @@ let choose = (num) => {
 
 $('.resetSeat').click(() => {
     $('.option').css('color', '#000000');
-    $('.option').css('background-color', 'indianred');
+    $('.option').css('background-color', '#DAE0E2');
     optionSelected.length = 0;
 })
 
 $('.cancel').click(() => {
-    $('.options').hide();
-    $('.seats').show();
-    $('.book').hide();
+    $('.options,.book').hide();
+    $('.datePicker,.seats').show();
 })
 
 $('.bookSeat').click(() => {

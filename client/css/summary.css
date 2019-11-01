@@ -17,8 +17,28 @@
 }
 
 .payment{
-    background-color: #7CEC9F;
+    background-color: #EAF0F1;
     margin: 3% 0% 0% 0%;
     padding: 3% 0% 3% 0%;
 }
+
+.angle{
+    margin : 3% 0% 0% 0%;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.fa-angle-left{
+   background-color: #8395A7;
+   padding: 0% 1.5% 0% 1%;
+   border-radius: 50px;
+   color: #FFFFFF;
+}
+
+.fa-angle-left:hover{
+    background-color: #827ffe;
+    color: #403866;
+}
+
+
 

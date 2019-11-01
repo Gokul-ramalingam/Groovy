@@ -8,14 +8,17 @@
     height: 100vh;
 }
 
-.data{
-    background-color: #DAE0E2;
-}
+
 
 .image{
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
+}
+
+.col-12{
+    margin: 0%;
+    padding: 0%;
 }
 
 .details{
@@ -25,9 +28,16 @@
 .seat,.option{
     width: 20%; 
     margin: 2%;
-    background-color: indianred;
     text-align: center;
     cursor: pointer;
+}
+
+
+.option{
+    padding: 1% 0% 1% 0%;
+    font-size: 1.3em;
+    border-radius: 10px;
+    background-color: #DAE0E2;
 }
 
 .datePicker{
@@ -38,13 +48,14 @@
 .date,.time{
     outline: none;
     border: none;
-    width: 45%;
+    width: 20%;
     padding: .5% 1% .5% 1%;
-    border-radius: 50px;
+    background-color: #DAE0E2;
+    /* border-radius: 50px; */
 }
 
 .time{
-    width: 25%;
+    width: 20%;
     margin: 0% 0% 0% 3%;
 }
 
@@ -53,6 +64,7 @@
     border: none;
     outline: none;
     font-size: 1.2em;
+    background-color: #FFFFFF;
 }
 
 .button:hover{
@@ -73,5 +85,18 @@
 }
 
 .confirm{
-    margin: 5% 0% 5% 0%;
+    margin: 1% 0% 5% 0%;
+}
+
+.fa-wheelchair{
+    font-size: 5rem;
+    color: #A4B0BD;
+}
+
+.name{
+    font-size: 2rem;
+}
+
+.salon{
+    text-align: center;
 }

@@ -24,3 +24,7 @@ $(document).ready(() => {
         }
     })
 })
+
+$('.angle').click(() => {
+    window.location.href = 'homepage.html'
+})

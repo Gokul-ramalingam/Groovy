@@ -18,7 +18,13 @@
         outline: 0;
         box-shadow: none!important;
     }
-
+    .content1{
+        margin: 2% 0% 3% 8%;
+    }
+    
+    .col-sm-4{
+    margin : 3% 0% 0% 0%;
+    } 
 
 /* .content{
     height:86.4vh;
@@ -49,11 +55,11 @@
     font-family: sans-serif;
 } 
 
-.buttonContainer{
+/* .buttonContainer{
     justify-content: center;
     margin: 3% 0% 1% 0%;
- }
-
+ } */
+/* 
 .button{
     border-radius: 50px;
     border: none;
@@ -68,6 +74,6 @@ background-color: #0A79DF;
 .button:focus {
     outline: 0;
     box-shadow: none!important;
-}
+} */
 
 

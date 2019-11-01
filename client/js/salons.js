@@ -13,21 +13,17 @@ $(document).ready(() => {
     let shops = JSON.parse(localStorage.getItem("shops"));
     let id = 0;
    shops.forEach(shop => {
-    $('.list').append(
-        `<div class="row item">
-        <div class="col-3 img d-none d-sm-block d-sm-none">
-        <img src="../images/home.png" alt="shop image" class="img-fluid shopImage">
-       </div>
-        <div class="col-9 shopName">
-           <h3>${shop.name}</h3>
-           <span class="address">${shop.address}</span><br>
-           <span class="stylists">No of stylists: <b>${shop.stylists.length}</b></span><br>
-           <span class="distance">Distance: <b>${shop.distance}</b></span>
-           <br>
-           <div class="row buttonContainer">
-           <button class="button" onclick="view(${id})"><b><i class="fa fa-arrow-right"></i></b></button>
-           </div>
-          </div>
+    $('.content1').append(
+        `<div class="col-sm-4">
+        <div class="card text-center" style="width: 18rem;">
+            <img src="../images/home.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">${shop.name}</h5>
+              <p class="card-text"><b>Location : </b>${shop.address}</p>
+              <p><b>Distance : </b>${shop.distance} away from you</p>
+              <div class="text-center"><a href="#" class="btn btn-primary button" onclick="view(${id})">View Details</a></div>
+            </div>
+        </div>
       </div>`
     )
     id++;

@@ -48,23 +48,6 @@ $('.button').click(() => {
       }
       else if(dateArray[0] > date.getFullYear())
              addStylist();
-
-
-
-
-    // $('.seats,.options').empty();
-    // $('.book,.confirm').hide();
-    // let dateArray = $('.date').val().split("-");
-    // let date = new Date();
-    // if (dateArray[0] == date.getFullYear() || dateArray[0] == date.getFullYear() + 1) {
-    //     if ((dateArray[1] == date.getMonth() + 1 && dateArray[2] >= date.getDate()) || 
-    //     (dateArray[1] > date.getMonth() + 1))
-    //     {
-    //         addStylist();
-    //     }
-    // }
-    // else if(dateArray[0] > date.getFullYear())
-    //        addStylist();
 })
 
 let addStylist = (data) => {

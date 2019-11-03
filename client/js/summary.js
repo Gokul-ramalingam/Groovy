@@ -8,6 +8,7 @@ $(document).ready(() => {
         $('.offer').text(data.availOffer);
         $('.name').text(data.shopname);
         $('.date').text(data.bookingDate.split("-").reverse().join("-"));
+        $('.time').text(data.timing);
         data.service.forEach(service =>{
             $('.services').append(`<span>
                                                     ${service.type}

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const key = require('../../setup/connection').secret;
+// const key = require('../../setup/connection').secret;
 const passport = require('passport');
 
 const Shop = require('../../models/Shop');
@@ -8,6 +8,22 @@ const Shop = require('../../models/Shop');
 const Booking = require('../../models/Booking');
 
 const Timing = require('../../models/Timing');
+
+
+
+//@type                      POST
+//@route                    /api/shop/userbookings
+//@description          This route is for booking appointment
+//@access                  Private
+router.get('/details',passport.authenticate('jwt',{session:false}),(req,res) =>{
+ Booking.find({username:req.user.username})
+                .then(bookings =>{
+                    res.json(bookings)
+                })
+                .catch(err =>{
+                    console.log("Error finding bookings "+err);
+                })
+})
 
 //@type                      GET
 //@route                    /api/shop/shops
@@ -161,6 +177,9 @@ router.get('/check/:detail' ,(req,res)=>{
                     console.log("Error finding booking at given timing "+err)
                 })
 })
+
+
+
 
 
 

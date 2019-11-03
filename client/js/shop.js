@@ -1,4 +1,4 @@
-let shopDetail = 0;
+let shopDetail;
 
 $(document).ready(() => {
     $.ajax({
@@ -17,41 +17,76 @@ $(document).ready(() => {
     $('.name').text(shopDetail.name);
 })
 
+let date,time;
 $('.button').click(() => {
-    $('.seats,.options').empty();
-    $('.book,.confirm').hide();
-    let dateArray = $('.date').val().split("-");
-    let date = new Date();
-    if (dateArray[0] == date.getFullYear() || dateArray[0] == date.getFullYear() + 1) {
-        if ((dateArray[1] == date.getMonth() + 1 && dateArray[2] >= date.getDate()) || 
-        (dateArray[1] > date.getMonth() + 1))
-        {
-            addStylist();
-        }
-    }
-    else if(dateArray[0] > date.getFullYear())
-           addStylist();
+  let detail = {};
+      date=$('.date').val();
+      time = $('.time :selected').text();
+      detail.date = date;
+      detail.time = time;
+      detail.shopname = shopDetail.name;
+
+      $('.seats,.options').empty();
+      $('.book,.confirm').hide();
+      let dateArray = $('.date').val().split("-");
+      let currentDate = new Date();
+      if (dateArray[0] == currentDate.getFullYear() || dateArray[0] == currentDate.getFullYear() + 1) {
+          if ((dateArray[1] == currentDate.getMonth() + 1 && dateArray[2] >= currentDate.getDate()) || 
+          (dateArray[1] > currentDate.getMonth() + 1))
+          {
+            $.ajax({
+                type:"GET",
+                   url:"http://localhost:4000/api/shop/check/"+JSON.stringify(detail),
+                success : (data) => {
+                    addStylist(data.stylistname);
+                },
+                error : (err) =>{
+                    console.log(err);
+                }
+            })
+          }
+      }
+      else if(dateArray[0] > date.getFullYear())
+             addStylist();
+
+
+
+
+    // $('.seats,.options').empty();
+    // $('.book,.confirm').hide();
+    // let dateArray = $('.date').val().split("-");
+    // let date = new Date();
+    // if (dateArray[0] == date.getFullYear() || dateArray[0] == date.getFullYear() + 1) {
+    //     if ((dateArray[1] == date.getMonth() + 1 && dateArray[2] >= date.getDate()) || 
+    //     (dateArray[1] > date.getMonth() + 1))
+    //     {
+    //         addStylist();
+    //     }
+    // }
+    // else if(dateArray[0] > date.getFullYear())
+    //        addStylist();
 })
 
-let addStylist = () => {
+let addStylist = (data) => {
     $('.seats').show();
             for (let i = 1; i <= shopDetail.stylists.length; i++) {
+                if(!data.includes(shopDetail.stylists[i-1]))
+                {
                 $('.seats').append(
                     `<div class="col-3.5 seat" onclick='selector(${i})'>
-                    <i class="fa fa-wheelchair select${i} selection"><div class="name">${shopDetail.stylists[i-1]}</div></i>
+                    <i class="fa fa-cut select${i} selection"><div class="name">${shopDetail.stylists[i-1]}</div></i>
                 </div>`
                 )
+                }
             }
 }
 
-let date;
+
 $('.confirm').click(() => {
     $('.datePicker,.seats,.confirm').hide();
     $('.options').empty();
     $('.options').show();
-    date=$('.date').val();
-    if(date !== '')
-    {
+    
     for (let i = 1; i <= shopDetail.options.length; i++) {
         $('.options').append(
             ` <span class="option pick${i}" onclick='choose(${i})'>
@@ -59,7 +94,6 @@ $('.confirm').click(() => {
         </span>`
         )
     }
-}
 })
 
 let prev;
@@ -73,18 +107,20 @@ let selector = (num) => {
     localStorage.setItem('stylist', num);
 }
 
-let optionSelected = [];
+let optionSelected = 0;
 let choose = (num) => {
-    $('.pick' + num).css('background-color', '#7CEC9F')
+    $('.option').css('color', '#000000');
+    $('.option').css('background-color', '#DAE0E2');
+    optionSelected = num;
+    $('.pick' + num).css('background-color', '#827ffe')
     $('.pick' + num).css('color', '#FFFFFF');
-    optionSelected.push(num);
     $('.book').show();
 }
 
 $('.resetSeat').click(() => {
     $('.option').css('color', '#000000');
     $('.option').css('background-color', '#DAE0E2');
-    optionSelected.length = 0;
+     optionSelected = 0;
 })
 
 $('.cancel').click(() => {
@@ -93,19 +129,18 @@ $('.cancel').click(() => {
 })
 
 $('.bookSeat').click(() => {
-    if (optionSelected.length >= 1) {
+    if (optionSelected > 0) {
         let total = 0;
         let dataString = {}
         dataString.id = shopDetail._id;
         dataString.shopname = shopDetail.name;
+        dataString.stylistname = shopDetail.stylists[parseInt(localStorage.getItem("stylist"))-1]; 
         dataString.options = [];
-        for (let i = 0; i < optionSelected.length; i++)
-        {
-            dataString.options.push(shopDetail.options[optionSelected[i]-1]);
-            total += shopDetail.options[optionSelected[i] - 1].price;
-        }
+        dataString.options.push(shopDetail.options[optionSelected-1]);
+        total += shopDetail.options[optionSelected - 1].price;
         dataString.payment =total;
         dataString.date = date;
+        dataString.time = time;
         dataString.discount =shopDetail.discount;
         $.ajax({
             type: "POST",

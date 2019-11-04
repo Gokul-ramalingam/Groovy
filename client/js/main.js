@@ -54,7 +54,7 @@ $('.signinBtn').click(() => {
             contentType: "application/json",
             url: "http://localhost:4000/api/auth/login",
             success: (data) => {
-                localStorage.setItem('token',data.token);
+                sessionStorage.setItem('token',data.token);
                 window.location.href='html/homepage.html';
             },
             error: () => {
@@ -79,7 +79,7 @@ $(".signupBtn").click(() => {
             contentType: "application/json",
             url: "http://localhost:4000/api/auth/register",
             success: (data) => {
-                 localStorage.setItem('token',data.token);
+                 sessionStorage.setItem('token',data.token);
                  window.location.href='html/homepage.html';
             },
             error: () => {

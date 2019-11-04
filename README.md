@@ -14,10 +14,10 @@ This application is build for Haircut Management.Customers can use this applicat
 
 ## Preview
 
-![Initial Window](readme/first.png)
-![Initial Window](readme/second.png)
-![Initial Window](readme/third.png)
-![Initial Window](readme/fourth.png)
-![Initial Window](readme/fifth.png)
-![Initial Window](readme/sixth.png)
-![Initial Window](readme/seventh.png)
+<kbd>![Initial Window](readme/first.png)
+<kbd>![Initial Window](readme/second.png)
+<kbd>![Initial Window](readme/third.png)
+<kbd>![Initial Window](readme/fourth.png)
+<kbd>![Initial Window](readme/fifth.png)
+<kbd>![Initial Window](readme/sixth.png)
+<kbd>![Initial Window](readme/seventh.png)

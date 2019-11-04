@@ -11,9 +11,9 @@ const Timing = require('../../models/Timing');
 
 
 
-//@type                      POST
-//@route                    /api/shop/userbookings
-//@description          This route is for booking appointment
+//@type                      GET
+//@route                    /api/shop/details
+//@description          This route is for getting user bookings
 //@access                  Private
 router.get('/details',passport.authenticate('jwt',{session:false}),(req,res) =>{
  Booking.find({username:req.user.username})
@@ -160,9 +160,9 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
             .catch(err => console.log('error occured while authorizing '+err))
 })
 
-//@type                      POST
+//@type                      GET
 //@route                    /api/shop/check
-//@description          This route is for booking appointment
+//@description          This route is for checking the details
 //@access                  Private
 
 router.get('/check/:detail' ,(req,res)=>{

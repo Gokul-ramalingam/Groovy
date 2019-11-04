@@ -1,59 +1,30 @@
-
-// let validation = () => {
-//     "use strict";
-
-
-
-//     var input = $('.validate-input .input100');
-
-//     $('.validate-form').on('submit',function(){
-//         var check = true;
-
-//         for(var i=0; i<input.length; i++) {
-//             if(validate(input[i]) == false){
-//                 showValidate(input[i]);
-//                 check=false;
-//             }
-//         }
-
-//         var verify = check;
-//     });
+    $('.input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
 
 
-//     $('.validate-form .input100').each(function(){
-//         $(this).focus(function(){
-//            hideValidate(this);
-//         });
-//     });
+    let showValidate = (input) => {
+        var thisAlert = $(input).parent();
+        $(thisAlert).addClass('alert-validate');
+    }
 
-//     function validate (input) {
-//         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-//             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-//                 return false;
-//             }
-//         }
-//         else {
-//             if($(input).val().trim() == ''){
-//                 return false;
-//             }
-//         }
-//     }
+ let hideValidate = (input) => {
+        var thisAlert = $(input).parent();
+        $(thisAlert).removeClass('alert-validate');
+    }
 
-//     function showValidate(input) {
-//         var thisAlert = $(input).parent();
-
-//         $(thisAlert).addClass('alert-validate');
-//     }
-
-//     function hideValidate(input) {
-//         var thisAlert = $(input).parent();
-
-//         $(thisAlert).removeClass('alert-validate');
-//     }
+    let validateEmail = (input) => {
+               if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                            return false;
+                        }
+                 else if($(input).val().trim() == ''){
+                            return false;
+                        }
+                return true;
+    }
     
-    
-
-// };
 
 $(document).ready(() => {
     $('.signup').hide();
@@ -73,6 +44,10 @@ $('.signinBtn').click(() => {
     let dataString = {}
     dataString.username = $('.signinName').val();
     dataString.password = $('.signinPassword').val();
+    let validation = dataString.username === ''?showValidate('.signinName'):
+    dataString.password ===''?showValidate('.signinPassword'):true;
+   console.log(validation);
+    if(validation){
       $.ajax({
             type: "POST",
             data: JSON.stringify(dataString),
@@ -86,6 +61,7 @@ $('.signinBtn').click(() => {
                 console.log("error");
             }
         });
+    }
 })
 
 $(".signupBtn").click(() => {
@@ -93,6 +69,10 @@ $(".signupBtn").click(() => {
     dataString.username = $('#username').val();
     dataString.email = $('#email').val();
     dataString.password = $('#password').val();
+    let validation = dataString.username === ''?showValidate('#username'):
+    !validateEmail('#email')?showValidate('#email'):
+    dataString.password ===''?showValidate('#password'):true;
+    if(validation){
         $.ajax({
             type: "POST",
             data: JSON.stringify(dataString),
@@ -114,4 +94,5 @@ $(".signupBtn").click(() => {
                 // $('#spinup').hide();
             }
         })
+    }
     })

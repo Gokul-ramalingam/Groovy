@@ -6,7 +6,7 @@ $(document).ready(() => {
         url    : "http://localhost:4000/api/auth/verify",
         headers: {
             "Content-Type":"application/json",
-            "Authorization":localStorage.getItem('token')
+            "Authorization":sessionStorage.getItem('token')
         },
         error : () =>{
             document.location.href="/";
@@ -131,7 +131,7 @@ $('.bookSeat').click(() => {
             url: "http://localhost:4000/api/shop/booking",
             headers: {
                 "Content-Type":"application/json",
-                "Authorization":localStorage.getItem('token')
+                "Authorization":sessionStorage.getItem('token')
             },
             success: (data) => {
              localStorage.setItem("bookingId",data.id);

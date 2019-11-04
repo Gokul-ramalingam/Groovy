@@ -81,7 +81,7 @@ router.post('/login',(req,res)=>{
              .then(user => {
                  if(!user)
                     return res.status(404).send({
-                        "Error" : "User already with the same name already exists"
+                        "Error" : "User with the given name does not exists"
                     });
                 
                 bcrypt.compare(password,user.password)

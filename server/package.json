@@ -4,7 +4,8 @@
   "description": "This an application designed and developed to make provision for users to make their hair cut process simple.",
   "main": "controller.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node controller.js"
   },
   "keywords": [
     "Node",

@@ -38,7 +38,8 @@ $('#signin').click(() =>{
         contentType: "application/json",
         url     :  "http://localhost:4000/api/barber/login",
         success: (data) => {
-            console.log(data);
+            sessionStorage.setItem('barbertoken',data.token);
+            window.location.href = '../html/income.html'
         },
         error: () => {
             console.log("error");

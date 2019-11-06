@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/barber.css">
+    <title>Groovy</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>   
+    <div class="container-fluid">
+       <div class="row content">
+        <div class="col-12 formContainer">
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center">
+                  <form class="col-10 col-md-5" id="signupForm">
+                      <h1 class="signupTitle"><b>Create Account</b></h1>
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="username" name="username" 
+                          placeholder="Enter Your username" required>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email"
+                            aria-describedby="emailHelp" placeholder="Enter Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Enter Your password"  required>
+                    </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="shopname" name="shopname" 
+                        placeholder="Enter Your shopname" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="mobile" name="mobile" 
+                        placeholder="Enter Your mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="" class="form-control" id="address" name="address" 
+                        placeholder="Enter Your address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="" class="form-control" id="stylist" name="stylist" 
+                        placeholder="Enter Your stylists name in comma seperated way eg:a,b" required>
+                    </div>
+                      <div class="col-12 col-md-12 text-center buttonContainer">
+                          <button type="button" class="btn btn-primary signupButton" id="signup">signup</button>
+                      </div>
+                      <span>Already a member? <span class="signinBtn">Sign in</span></span>
+                  </form>
+                  <form class="col-10 col-md-5" id="signinForm">
+                    <h1 class="signupTitle"><b>Welcome Back!</b></h1>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="signInUsername" name="username" 
+                        placeholder="Enter Your username" required>
+                    </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" id="signInPassword" name="password"
+                      placeholder="Enter Your password"  required>
+                  </div>
+                    <div class="col-12 col-md-12 text-center buttonContainer">
+                        <button type="button" class="btn btn-primary signinButton" id="signin">signin</button>
+                    </div>
+                    <span>Not yet a member? <span class="signupBtn">Sign up</span></span>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/barber.js"></script>
+</html>

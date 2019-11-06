@@ -1,11 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const key = require('../../setup/connection').secret;
+// const key = require('../../setup/connection').secret;
 const passport = require('passport');
 
 const Shop = require('../../models/Shop');
 
 const Booking = require('../../models/Booking');
+
+const Timing = require('../../models/Timing');
+
+
+
+//@type                      GET
+//@route                    /api/shop/details
+//@description          This route is for getting user bookings
+//@access                  Private
+router.get('/details',passport.authenticate('jwt',{session:false}),(req,res) =>{
+ Booking.find({username:req.user.username})
+                .then(bookings =>{
+                    res.json(bookings)
+                })
+                .catch(err =>{
+                    console.log("Error finding bookings "+err);
+                })
+})
 
 //@type                      GET
 //@route                    /api/shop/shops
@@ -58,7 +76,8 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                                    "discount"     :0,
                                    "service"     : booking.service,
                                    "bookingDate":booking.bookingDate,
-                                   "payment" :booking.payment
+                                   "payment" :booking.payment,
+                                   "timing" : booking.time
                                 })
                                 }
                                   Booking.updateOne({_id:booking._id},{paymentAfterDiscount : booking.payment - (booking.payment*(booking.discount/100))})
@@ -70,7 +89,8 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
                                               "discount"    :booking.payment*(booking.discount/100),
                                               "service"       : booking.service,
                                               "bookingDate":booking.bookingDate,
-                                              "payment"    :booking.payment - (booking.payment*(booking.discount/100))
+                                              "payment"    :booking.payment - (booking.payment*(booking.discount/100)),
+                                              "timing" : booking.time
                                             })
                             })
                                .catch(err => console.log("Error occured while finding discount "+err));
@@ -82,10 +102,10 @@ router.get('/savings/:shopname/:bookingId',(req,res) => {
 //@type                      POST
 //@route                    /api/shop/booking
 //@description          This route is for booking appointment
-//@access                  Public
+//@access                  Private
 
 router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) => {
-    const {id,shopname,options,payment,date,discount} = req.body;
+    const {id,shopname,stylistname,options,payment,date,time,discount} = req.body;
     User.findOne({_id:req.user.id})
             .then(user =>{
                 if(!user)    
@@ -98,13 +118,40 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
                      service : options,
                      payment : payment,
                      discount:discount,
-                     bookingDate: date
+                     bookingDate: date,
+                     time:time
                  })
+
+
+                 const newTiming = new Timing({
+                    date : date,
+                    time:time,
+                    shopname:shopname,
+                    stylistname:stylistname
+                   })
+
                  newBooking.save()
-                 .then(booked=>{
+                 .then(booked => {
                      if(!booked)
                       return res.status(400).json({"bookingFailed":"Something went wrong while booking your appointment please try again"})
-                     res.json({"id":booked._id})
+                     Timing.findOne({date:date,time:time,shopname:shopname})
+                     .then(timing =>{
+                        if(timing)
+                        {
+                       timing.updateOne({$push:{stylistname:stylistname}})
+                                  .then(() => {
+                                    res.status(200).json({"id":booked._id})
+                                  })
+                        }
+                        else
+                        {
+                            newTiming.save()
+                                     .then(timing=>{
+                                         res.status(200).json({"id":booked._id})
+                                     })
+                                     .catch(err => console.log("Error occured while storing timing details "+err)); 
+                        }
+                     })                     
                  })
                  .catch(err =>{
                      console.log("Something went wrong while booking your appointment please try again "+err);
@@ -112,6 +159,26 @@ router.post('/booking',passport.authenticate('jwt',{ session:false }),(req,res) 
             })
             .catch(err => console.log('error occured while authorizing '+err))
 })
+
+//@type                      GET
+//@route                    /api/shop/check
+//@description          This route is for checking the details
+//@access                  Private
+
+router.get('/check/:detail' ,(req,res)=>{
+    const {date,time,shopname} = JSON.parse(req.params.detail);
+    Timing.findOne({shopname:shopname,date:date,time:time})
+                .then(booking => {
+                    if(!booking)
+                     return res.status(200).json({"stylistname":["No booking available on the given timing"]})
+                     res.json(booking);
+                })
+                .catch(err =>{
+                    console.log("Error finding booking at given timing "+err)
+                })
+})
+
+
 
 
 

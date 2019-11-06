@@ -1,0 +1,79 @@
+.logo{
+    height: 70px;
+    width: 150px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.searchBtn{
+    background-color: #7CEC9F;
+    border: none;
+}
+
+.searchBtn:hover{
+    color: #EAF0F1;
+    background-color: #0A79DF;
+    }
+.searchBtn:focus {
+        outline: 0;
+        box-shadow: none!important;
+    }
+    .content1{
+        margin: 2% 0% 3% 8%;
+    }
+    
+    .col-sm-4{
+    margin : 3% 0% 0% 0%;
+    } 
+
+/* .content{
+    height:86.4vh;
+    background-color: #EAF0F1;
+    justify-content: center;
+}  */
+
+ .list{
+    /* height: 90%;
+    width: 80%;
+    margin-top: 2%;
+    overflow-y: scroll; */
+    display: flex;
+}
+
+/* .item{
+    margin: 1% 2.5% 1% 2.5%;
+    background-color: #ffffff;
+} */
+
+ .img{
+    padding: 0%;
+    margin: 0%;
+}
+
+
+.shopName{
+    font-family: sans-serif;
+} 
+
+/* .buttonContainer{
+    justify-content: center;
+    margin: 3% 0% 1% 0%;
+ } */
+/* 
+.button{
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background-color: #53E0BC;
+}
+
+.button:hover{
+color: #EAF0F1;
+background-color: #0A79DF;
+}
+.button:focus {
+    outline: 0;
+    box-shadow: none!important;
+} */
+
+

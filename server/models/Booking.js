@@ -38,6 +38,10 @@ const bookingSchema = new Schema({
      type : String,
      required: true
  },
+ time:{
+     type: String,
+     required: true
+ },
  PresentDate:{
      type : Date,
      default: Date.now()

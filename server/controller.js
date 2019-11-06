@@ -11,6 +11,7 @@ const port = process.env.PORT || 4000;
 // routes
 const auth = require('./routes/api/auth');
 const shop = require('./routes/api/shop');
+const barber = require('./routes/api/barber');
 
 //MongoDB configuration
 const db = require('./setup/connection').url;
@@ -36,6 +37,7 @@ require('./strategies/jsonjwtStrategy')(passport);
 //Main Routes
 app.use('/api/auth',auth);
 app.use('/api/shop',shop);
+app.use('/api/barber',barber);
 
 
 //Listening to a port

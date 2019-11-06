@@ -98,8 +98,8 @@ router.post('/login',(req,res)=>{
                                 if(correct){
                                     const payload = {
                                         id : user.id,
-                                        username : user.username,
-                                        email: user.email
+                                        ownername : user.ownername,
+                                        shopname: user.shopname
                                     }
 
                                     jsonwt.sign(

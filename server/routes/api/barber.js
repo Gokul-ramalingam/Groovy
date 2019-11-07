@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jsonwt = require('jsonwebtoken');
 const key = require('../../setup/connection').secret;
 const Barber = require('../../models/Barber');
-
+const Booking = require('../../models/Booking');
 
 //@type                      POST
 //@route                    /api/barber/register
@@ -122,6 +122,35 @@ router.post('/login',(req,res)=>{
                             })
                             .catch(err => console.log("error generating token "+err));
              })
+})
+
+// @type           Post 
+// @route          /api/barber/income
+// @desc           This route is for barber login
+// @access       PUBLIC
+router.get('/income/:ownername',(req,res) =>{
+       Barber.findOne({ownername:req.params.ownername})
+                   .then(barber => {
+                       const month = new Date().getMonth()+1;
+                       const day = new Date().getDate();
+                       let total;
+                       let count=0;
+                    Booking.find({shopname:barber.shopname})
+                    .then(booking =>{
+                        booking.map(book => {
+                            let date = book.bookingDate.split('-');
+                            if(date[1] == month && date[2].replace(/^0+/, '') <= day)
+                            {
+                                total += book.payment;
+                                count++;
+                            }
+                        })
+                        if(!total)
+                          return res.json({"income":"sorry we could not predict it as you don't have any bookings for this month"})
+                        total = total/count;
+                        return res.json({"income":"The estimated turn over at the end of the month is "+total*30});
+                    })
+                   })
 })
 
 

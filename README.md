@@ -23,5 +23,5 @@ This application is build for Haircut Management.Customers can use this applicat
 <kbd>![Initial Window](readme/seventh.png)
  
  ## Author
- Gokul R
- Roushan Raj
+ * Gokul R
+ * Roushan Raj
